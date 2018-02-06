@@ -1,0 +1,33 @@
+let processor = {
+  timerCallback: function() {
+    if (this.video.paused || this.video.ended) {
+      return;
+    }
+    this.computeFrame();
+    let self = this;
+    setTimeout(function () {
+      self.timerCallback();
+    }, 0);
+  },
+
+  doLoad: function() {
+    this.video = document.getElementById("video");
+    this.c1 = document.getElementById("c1");
+    this.ctx1 = this.c1.getContext("2d");
+    this.c2 = document.getElementById("c2");
+    this.ctx2 = this.c2.getContext("2d");
+    let self = this;
+    this.video.addEventListener("play", function() {
+      self.width = self.video.videoWidth / 2;
+      self.height = self.video.videoHeight / 2;
+      self.timerCallback();
+    }, false);
+  },
+
+  computeFrame: function() {
+    // args: image, dx, dy, dWidth, dHeight, sx, sy, sWidth, sHeight
+    this.ctx1.drawImage(this.video, 0, 0, 1280, 720, 0, 0, 640, 384);
+    this.ctx2.drawImage(this.video, 0, 720, 1280, 720, 0, 0, 640, 384);
+    return;
+  }
+};
