@@ -3,31 +3,39 @@
 <head>
     <style>
         body {
-            background: black;
+            background: #333;
             color:#CCCCCC;
         }
-        div {
-            float: left;
-            border :1px solid #444444;
-            padding:10px;
-            margin: 10px;
-            background:#3B3B3B;
-        }
     </style>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
 
+    <link rel="stylesheet" href="css/reset.css"> <!-- CSS reset -->
+    <link rel="stylesheet" href="css/style.css"> <!-- Resource style -->
+    <script src="js/modernizr.js"></script> <!-- Modernizr -->
 </head>
 
 <body onload="processor.doLoad()">
 <div style="display: none">
     <video id="video" src="vid.webm" controls="true"/>
 </div>
-<div>
-    <canvas id="c1" width="640" height="384"></canvas>
+<div class="wrapper">
+<figure class="cd-image-container">
     <canvas id="c2" width="640" height="384"></canvas>
+    <div class="cd-resize-img"> <!-- the resizable image on top -->
+        <canvas id="c1" width="640" height="384"></canvas>
+    </div>
+    <span class="cd-handle"></span>
+</figure> <!-- cd-image-container -->
+</div>
+<div class="controls">
     <button id="play">Play</button>
 </div>
 
+
 <script type="text/javascript" src="vid-processor.js"></script>
 <script type="text/javascript" src="main.js"></script>
+<script src="js/jquery-2.1.1.js"></script>
+<script src="js/jquery.mobile.custom.min.js"></script> <!-- Resource jQuery -->
+<script src="js/main.js"></script> <!-- Resource jQuery -->
 </body>
 </html>
